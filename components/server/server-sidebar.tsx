@@ -6,7 +6,14 @@ import { redirect } from "next/navigation";
 import { ServerHeader } from "./server-header";
 import { ScrollArea } from "../ui/scroll-area";
 import { ServerSearch } from "./server-search";
-import { Hash, Mic, ShieldAlert, ShieldCheck, Video } from "lucide-react";
+import {
+  Hash,
+  Mic,
+  ShieldAlert,
+  ShieldCheck,
+  Video,
+  VideoOff,
+} from "lucide-react";
 
 interface ServerSidebarProps {
   serverId: string;
@@ -95,10 +102,28 @@ export const ServerSidebar = async ({ serverId }: ServerSidebarProps) => {
               {
                 label: "Voice Channels",
                 type: "channel",
-                data: textChannels?.map((channel) => ({
+                data: audioChannels?.map((channel) => ({
                   id: channel.id,
                   name: channel.name,
                   icon: iconMap[channel.type],
+                })),
+              },
+              {
+                label: "Video Channels",
+                type: "channel",
+                data: videoChannels?.map((channel) => ({
+                  id: channel.id,
+                  name: channel.name,
+                  icon: iconMap[channel.type],
+                })),
+              },
+              {
+                label: "Members",
+                type: "member",
+                data: members?.map((member) => ({
+                  id: member.id,
+                  name: member.profile.name,
+                  icon: roleIconMap[member.role],
                 })),
               },
             ]}
