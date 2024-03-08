@@ -11,6 +11,12 @@ interface ServerSectionProps {
   server?: ServerWithMembersWithProfiles;
 }
 
-export const ServerSection = () => {
+export const ServerSection = ({
+  label,
+  role,
+  sectionType,
+  channelType,
+  server,
+}: ServerSectionProps) => {
   return <div>Server Section</div>;
 };
